@@ -1,0 +1,19 @@
+name: "Hello world workflow"
+
+# Controls when the action will run, Triggers the workflow on push to master or production branch
+on:
+    push:
+        branches:
+            - master
+            - production
+# A job is a collection of steps that run on the same runner
+jobs:
+    # here we will name the job (job name hello_world)
+    hello_world:
+        # here we will specify the runner (runner is the virtual machine that will run the job)
+        runs-on: ubuntu-latest
+        # here we will specify the steps (steps are the commands that will run on the runner)
+        steps:
+            # here we will name the step (step name Print hello world)
+            - name: "Print hello world"
+              run: echo "Hello world"
