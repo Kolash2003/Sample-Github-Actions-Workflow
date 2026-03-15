@@ -17,3 +17,6 @@ jobs:
             # here we will name the step (step name Print hello world)
             - name: "Print hello world"
               run: echo "Hello world"
+
+            - name: "Print current date"
+              run: date
