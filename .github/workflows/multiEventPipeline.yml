@@ -11,6 +11,8 @@ on:
         types:
             - closed
             - opened
+    schedule:
+        - cron: "0 10 * * 2,4" # Event : whenever a scedule is made on Tuesday and Thursday at 10:00 AM
     workflow_dispatch: # Event : whenever a workflow dispatch is made to the repository on the master/test branch
 
 jobs:
@@ -35,6 +37,13 @@ jobs:
         steps: # Steps to be executed in the job
             - name: "Running on pull request closed"
               run: echo "Running on pull request closed"
+
+    on-schedule: # Job 4 name
+        if: github.event_name == 'schedule'
+        runs-on: ubuntu-latest
+        steps: # Steps to be executed in the job
+            - name: "Running on schedule"
+              run: echo "Running on schedule"
 
     on-workflow-dispatch: # Job 3 name
         if: github.event_name == 'workflow_dispatch'
