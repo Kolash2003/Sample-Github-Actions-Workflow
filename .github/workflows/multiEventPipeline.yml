@@ -10,6 +10,7 @@ on:
             - master
         types:
             - closed
+            - opened
     workflow_dispatch: # Event : whenever a workflow dispatch is made to the repository on the master/test branch
 
 jobs:
@@ -21,8 +22,8 @@ jobs:
             - name: "Running on master push"
               run: echo "Running on master/test push"
 
-    on-pull-request: # Job 2 name
-        if: github.event_name == 'pull_request'
+    on-pull-request-opened: # Job 2 name
+        if: github.event_name == 'pull_request' && github.event.action == 'opened'
         runs-on: ubuntu-latest
         steps: # Steps to be executed in the job
             - name: "Running on pull request"
