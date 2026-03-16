@@ -8,9 +8,11 @@ on:
     pull_request: # Event : whenever a pull request is made to the repository on the master/test branch
         branches:
             - master
+    workflow_dispatch: # Event : whenever a workflow dispatch is made to the repository on the master/test branch
 
 jobs:
     on-push: # Job 1 name
+        # we need to use if, or else the job will run on both push and pull_request events
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
         steps: # Steps to be executed in the job
